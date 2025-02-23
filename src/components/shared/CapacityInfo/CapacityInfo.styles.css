@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    margin: 1rem 0;
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+    .filled {
+        width: 33.3%;
+        background-color: red;
+    }
+    .available {
+        width: 33.3%;
+        background-color: green;
+    }
+}

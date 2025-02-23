@@ -1,0 +1,25 @@
+.termin-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    background-color: #f0f0f0;
+    .timeslots-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        .timeslot {
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 80%;
+        }
+    }
+    
+
+}
+
