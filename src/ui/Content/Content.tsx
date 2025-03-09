@@ -7,21 +7,16 @@ import { TerminsPage } from "../Pages/TerminPage/TerminsPage";
 import { Termin } from "../Pages/TerminPage/Termin/Termin";
 import { supabase } from "../../utils/supabase";
 import { useEffect } from "react";
-import { setCurrentUser } from "../../redux/authSlice/authSlice";
+import { loginUser, setCurrentUser } from "../../redux/authSlice/authSlice";
+import { useAuth } from "../../utils/hooks/useAuth";
+import LoginPage from "../Pages/LoginPage/LoginPage";
 
 export const Content = () => {
   const page = useSelector((state: any) => state.router.currentPage);
-  const dispatch = useDispatch();
+  const { user, isLoading, login, signup, logout } = useAuth();
+  console.log(user);
   useEffect(() => {
-    const login = async () => {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: "talgiron31@gmail.com",
-        password: "test123",
-      });
-      dispatch(setCurrentUser(data?.user));
-      console.log(data, error);
-    };
-    login();
+    // logout();
   }, []);
   const getCurrentPage = () => {
     switch (page) {
@@ -38,6 +33,10 @@ export const Content = () => {
         return <HomePage />;
     }
   };
+
+  if (!user) {
+    return <LoginPage />;
+  }
 
   return (
     <>

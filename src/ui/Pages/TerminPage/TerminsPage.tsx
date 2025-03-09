@@ -19,7 +19,7 @@ export const TerminsPage = () => {
     <div className="termin-page-container">
       <div className="datepicker-container">
         <DateInput
-          value={date}
+          value={date ?? new Date()}
           onChange={setDate}
           label="Date input"
           placeholder="Date input"

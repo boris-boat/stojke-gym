@@ -4,10 +4,11 @@ import { supabase } from "../../../../utils/supabase";
 import "./Termin.styles.css";
 import { CapacityInfo } from "../../../../components/shared/CapacityInfo/CapacityInfo";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../../utils/hooks/useAuth";
 
 export const Termin = () => {
   const termin = useSelector((state: any) => state.termin.selectedTermin);
-  const currentUser = useSelector((state: any) => state.auth.currentUser);
+  const { user } = useAuth();
   const [unavailableSlot, setUnavailableSlot] = useState<number | undefined>(
     undefined,
   );
@@ -21,7 +22,7 @@ export const Termin = () => {
 
   const handleMakeReservation = async () => {
     const { error, data } = await supabase.from("user_slot_selections").insert({
-      user_id: currentUser.id,
+      user_id: user.id,
       slot_start: termin.start,
       slot_end: termin.end,
       date: formattedDate,
